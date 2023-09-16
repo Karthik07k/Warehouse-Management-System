@@ -1,0 +1,50 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+<title>Shiping Data Page</title>
+</head>
+
+<body>
+	<div th:insert="fragments/commonUI :: userheader"></div>
+	<div th:insert="fragments/commonUI :: usermenu"></div>
+	<div th:insert="fragments/commonUI :: userfooter"></div>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>Shiping Data Page</h3>
+			</div>
+
+			<div class="card-body">
+				<table class="table table-hover">
+					<tr class="bg-info text-white">
+						<th>Id</th>
+						<th>Shiping Code</th>
+						<th>Reference Number</th>
+						<th>Courier Reference Number</th>
+						<th>Contact Details</th>
+						<th>Sale Order Code</th>
+						<th>Description</th>
+						<th>Actions</th>
+					</tr>
+					<tr th:each="obj:${list}">
+						<td th:text="${obj.id}"></td>
+						<td th:text="${obj.shipingCode}"></td>
+						<td th:text="${obj.shipngRefNum}"></td>
+						<td th:text="${obj.courierRefNum}"></td>
+						<td th:text="${obj.contactDetails}"></td>
+						<td th:text="${obj.so.orderCode}"></td>
+						<td th:text="${obj.description}"></td>
+						<td><a th:href="@{/shiping/parts(id=${obj.id})}"
+							class="btn btn-success">Part <i class="fa fa-cart-plus"
+								aria-hidden="true"></i></a></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<!-- card end -->
+	</div>
+	<!-- container end -->
+</body>
+</html>

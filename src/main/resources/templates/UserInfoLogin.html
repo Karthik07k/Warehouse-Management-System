@@ -1,0 +1,65 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<title>USER LOGIN PAGE</title>
+</head>
+
+<body>
+	<div th:insert="fragments/commonui :: userheader"></div>
+
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>USER LOGIN PAGE</h3>
+            </div>
+            <div class="card-body">
+                <form id="myUserLoginForm" th:action="@{/login}" method="POST">
+                    <!-- Row#1 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>EMAIL</label>
+                        </div>
+                        <div class="col-4">
+                            <input name="username" id="username" class="form-control" required/>
+                        </div>
+                        <div class="col-5">
+                            <span id="usernameError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row#2 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>PASSWORD</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="password" name="password" id="password" class="form-control" required />
+                        </div>
+                        <div class="col-5">
+                            <span id="passwordError"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" >
+                    	LOGIN 
+                    </button>
+                    
+                </form>
+                <a th:href="@{/user/showForgot}">Forgot password?</a> |
+                <a th:href="@{/user/showUserActiveOtp}">Self Activate?</a> 
+            </div>
+            <!-- card body end -->
+             <div class="card-footer text-center">
+                <span th:if="${param.error}" class="text-danger">User not found/Inactive</span>
+                <span th:if="${param.logout}" class="text-success">User logout success</span>
+            </div> <!--  footer end -->
+        </div>
+        <!-- card end -->
+    </div>
+    <!-- container end -->
+    <script type="text/javascript" th:src="@{/myjs/userlogin.js}"></script>
+	
+</body>
+
+</html>

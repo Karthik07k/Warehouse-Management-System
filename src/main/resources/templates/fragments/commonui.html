@@ -1,0 +1,172 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head th:fragment="userheader">
+ 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/mydesign.css}" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<!--nav bar starts-->
+<div th:fragment="usermenu">
+	<center>
+		<img th:src="@{/imgs/logo.png}" width="1200px" height="180px"/>
+	</center>
+<nav  class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" th:href="@{/user/profile}"><span th:text="${session.currentUser.name}"></span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+     
+      <!--UOM START-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          UOM
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/uom/register}">Register</a>
+          <a class="dropdown-item" th:href="@{/uom/all}">All</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/uom/charts}">Charts</a>
+        </div>
+      </li>
+      <!--UOM END-->
+     
+     <!--OM START-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          OM
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/om/register}">Register</a>
+          <a class="dropdown-item" th:href="@{/om/all}">All</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/om/charts}">Charts</a>
+        </div>
+      </li>
+      <!--OM END-->
+      
+      <!--SHIPMENT START-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SHIPMENT
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/st/register}">Register</a>
+          <a class="dropdown-item" th:href="@{/st/all}">All</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/st/charts}">Charts</a>
+        </div>
+      </li>
+      <!--SHIPMENT END-->
+      
+      <!--WH USER START-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          WH USER
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/wh/register}">Register</a>
+          <a class="dropdown-item" th:href="@{/wh/all}">All</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/wh/charts}">Charts</a>
+        </div>
+      </li>
+      <!--WH USER END-->
+      
+      <li class="nav-item active">
+        <a class="nav-link text-white" th:href="@{/doc/all}">DOCUMENTS </a>
+      </li>
+      
+      
+      <!--PART START-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PART
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/part/register}">Register</a>
+          <a class="dropdown-item" th:href="@{/part/all}">All</a>
+        </div>
+      </li>
+      <!--PART END-->
+      
+      <!--PO START-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PO
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/po/register}">Register</a>
+          <a class="dropdown-item" th:href="@{/po/all}">All</a>
+        </div>
+      </li>
+      <!--PO END-->
+      
+      <!--GRN START-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          GRN
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/grn/register}">Register</a>
+          <a class="dropdown-item" th:href="@{/grn/all}">All</a>
+        </div>
+      </li>
+      <!--GRN END-->
+      
+      <!--SALE ORDER START-->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-white" href="#"
+					id="navbarDropdown" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> SALE ORDER </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" th:href="@{/sale/register}">Register</a>
+						<a class="dropdown-item" th:href="@{/sale/all}">All</a>
+
+					</div></li>
+				<!--SALE ORDER END-->
+      		   <!--Shiping START-->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-white" href="#"
+					id="navbarDropdown" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> SHIPING </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" th:href="@{/shiping/register}">Register</a>
+						<a class="dropdown-item" th:href="@{/shiping/all}">All</a>
+
+					</div>
+				</li>
+			   <!--Shiping END-->
+			   <!--USER START-->
+				<li class="nav-item dropdown" th:if="${session.isAdmin}"><a
+					class="nav-link dropdown-toggle text-white" href="#"
+					id="navbarDropdown" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> USER </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" th:href="@{/user/register}">Register</a>
+						<a class="dropdown-item" th:href="@{/user/all}">All</a>
+					</div>
+				</li>
+			   <!--USER END-->
+      		<li class="nav-item">
+        		<a class="nav-link text-white" th:href="@{/logout}">LOGOUT </a>
+      		</li>
+       
+    </ul>
+  </div>
+</nav>
+</div>
+	<!--nav bar end-->
+
+	<!--footer started-->
+ 	 <div th:fragment="userfooter" class="myfooter bg-info text-white">
+  		 <p>Copyrights @ NaresIT - 1900 - 2020 </p>
+	 </div>
+	<!--footer end-->
+</html>

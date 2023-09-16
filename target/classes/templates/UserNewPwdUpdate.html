@@ -1,0 +1,123 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<title>USER PASSWORD UPDATE</title>
+</head>
+
+<body>
+	<div th:insert="fragments/commonui :: userheader"></div>
+	<div th:insert="fragments/commonui :: usermenu"></div>
+	<div th:insert="fragments/commonui :: userfooter"></div>
+
+  <div class="container">
+      <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+          <h3>USER PASSWORD UPDATE</h3>
+        </div>
+        <div class="card-body">
+          <form id="myPwdUpdateForm" th:action="@{/user/doUpdateNewPwd}" method="POST">
+            <div class="row">
+              <div class="col-3">
+                <label>Enter Password</label>
+              </div>
+              <div class="col-4">
+                <input
+                  type="password"
+                  name="password1"
+                  id="password1"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-5">
+                <span id="password1Error"></span>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                  <label>Re-Enter Password</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="password"
+                    name="password2"
+                    id="password2"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-5">
+                  <span id="password2Error"></span>
+                </div>
+              </div>
+
+              <input type="submit" class="btn btn-success" value="Update"/>
+          </form>
+        </div>
+        <!-- card body end -->
+      </div>
+      <!-- card end -->
+    </div>
+    <!-- container end -->
+    <script>
+        $(document).ready(function(){
+            $("#password1Error").hide();
+            $("#password2Error").hide();
+
+            var password1Error = false;
+            var password2Error = false;
+
+            function validate_password1() {
+                var val = $("#password1").val();
+                var exp =/^[A-Za-z0-9\-\.\@]{4,12}$/;
+                if(val=='') {
+                    $("#password1Error").show();
+                    $("#password1Error").css('color','red');
+                    $("#password1Error").html("Must Enter New Password");
+                    password1Error = false;
+                } else if(!exp.test(val)) {
+                    $("#password1Error").show();
+                    $("#password1Error").css('color','red');
+                    $("#password1Error").html("Allowed A-Z,a-z,0-9 and -.@ with 4-12 size");
+                    password1Error = false;
+                } else {
+                    $("#password1Error").hide();
+                    password1Error = true;
+                }
+                return password1Error;
+            }
+
+            $("#password1").keyup(function(){
+                validate_password1();
+            });
+
+            function validate_password2() {
+                var val1 = $("#password1").val();
+                var val2 = $("#password2").val();
+                if(val1!==val2) {
+                    $("#password2Error").show();
+                    $("#password2Error").css('color','red');
+                    $("#password2Error").html("Password not matching");
+                    password2Error = false;
+                } else {
+                    $("#password2Error").hide();
+                    password2Error = true;
+                }
+                return password2Error;
+            }
+
+            $("#password2").keyup(function(){
+                validate_password2();
+            });
+
+            $("#myPwdUpdateForm").submit(function(){
+                validate_password1();
+                validate_password2();
+                if(password1Error && password2Error) return true;
+                else return false;
+            });
+
+        });
+    </script>
+        
+  </body>
+</html>

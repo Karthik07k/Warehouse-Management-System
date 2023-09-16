@@ -1,0 +1,62 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+<title>Shiping Part Data Page</title>
+</head>
+
+<body>
+	<div th:insert="fragments/commonUI :: userheader"></div>
+	<div th:insert="fragments/commonUI :: usermenu"></div>
+	<div th:insert="fragments/commonUI :: userfooter"></div>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>Shiping Part Data Page</h3>
+			</div>
+
+			<div class="card-body">
+				<table class="table table-hover">
+					<tr>
+						<th class="bg-warning text-white">Shiping Code</th>
+						<td th:text="${shiping.shipingCode}"></td>
+						<th class="bg-warning text-white">Order Code</th>
+						<td th:text="${shiping.so.orderCode}"></td>
+					</tr>
+				</table>
+				<hr />
+				<table class="table table-hover">
+					<tr class="bg-info text-white">
+						<th>Serial No</th>
+						<th>Part Code</th>
+						<th>Base Cost</th>
+						<th>Qty</th>
+						<th>Line Value</th>
+						<th>Actions</th>
+					</tr>
+					<tr th:each="obj,i:${list}">
+						<td th:text="${i.count}"></td>
+						<td th:text="${obj.partCode}"></td>
+						<td th:text="${obj.baseCost}"></td>
+						<td th:text="${obj.qty}"></td>
+						<td th:text="${obj.baseCost * obj.qty}"></td>
+						<td> 
+						<th:block th:if="${obj.status==null}">
+								<a th:href="@{/shiping/accept(id=${shiping.id},dtlId=${obj.id})}"
+									class="btn btn-success"> RECEIVE </a> |
+                               <a th:href="@{/shiping/reject(id=${shiping.id},dtlId=${obj.id})}"
+									class="btn btn-danger"> RETURN </a>
+							</th:block> <th:block th:if="${obj.status!=null}">
+								<b th:text="${obj.status}"></b>
+							</th:block>
+							</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<!-- card end -->
+	</div>
+	<!-- container end -->
+</body>
+</html>

@@ -1,0 +1,173 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+<title>Sale Oder Register</title>
+<body>
+	<div th:insert="fragments/commonUI :: userheader"></div>
+	<div th:insert="fragments/commonUI :: usermenu"></div>
+	<div th:insert="fragments/commonUI :: userfooter"></div>
+
+	<!-- Container -->
+	<div class="Container">
+		<!-- Card -->
+		<div class="card">
+			<!-- Card Header -->
+			<div class="card-header bg-primary text-center text-white">
+				<h2>Sale Order Register Page</h2>
+			</div>
+			<!-- Card Body -->
+			<div class="card-body">
+				<form th:action="@{/sale/save}" method="POST">
+					<!-- Row#1 -->
+					<div class="row">
+						<div class="col-4">
+							<label>Order Code</label>
+						</div>
+
+						<div class="col-5">
+							<input type="text" name="orderCode" id="orderCode"
+								class="form-control" />
+						</div>
+
+						<div class="col-3">
+							<span id="orderCodeError"></span>
+						</div>
+					</div>
+
+
+					<!-- Row#Integration -->
+					<div class="row">
+						<div class="col-4">
+							<label>Shipment Code</label>
+						</div>
+						<div class="col-5">
+							<select name="st.id" id="stId" class="form-control">
+								<option value="">-Select-</option>
+								<option th:each="obj:${sts}" th:value="${obj.key}"
+									th:text="${obj.value}"></option>
+							</select>
+						</div>
+						<div class="col-3">
+							<span id="stIdError"></span>
+						</div>
+					</div>
+
+					<!-- Row#Integration -->
+					<div class="row">
+						<div class="col-4">
+							<label>Customer</label>
+						</div>
+						<div class="col-5">
+							<select name="customer.id" id="customerId" class="form-control">
+								<option value="">-Select-</option>
+								<option th:each="obj:${customers}" th:value="${obj.key}"
+									th:text="${obj.value}"></option>
+							</select>
+						</div>
+						<div class="col-3">
+							<span id="customerIdError"></span>
+						</div>
+					</div>
+
+					<!-- Row#2 -->
+					<div class="row">
+						<div class="col-4">
+							<label>Reference No</label>
+						</div>
+
+						<div class="col-5">
+							<input type="text" name="refNum" id="refNum" class="form-control" />
+						</div>
+
+						<div class="col-3">
+							<span id="refNumError"></span>
+						</div>
+					</div>
+
+					<!-- Row#3 -->
+					<div class="row">
+						<div class="col-4">
+							<label>Stock Mode</label>
+						</div>
+
+						<div class="col-5">
+							<input type="radio" name="stockMode" id="stockMode1"
+								value="Grade" /> Grade <input type="radio" name="stockMode"
+								id="stockMode2" value="Margin" /> Margin
+						</div>
+
+						<div class="col-3">
+							<span id="stockModeError"></span>
+						</div>
+					</div>
+
+					<!-- Row#4 -->
+					<div class="row">
+						<div class="col-4">
+							<label>Stock Source</label>
+						</div>
+
+						<div class="col-5">
+							<select name="stockSource" id="stockSource" class="form-control">
+								<option value="">-Select</option>
+								<option value="Open">Open</option>
+								<option value="Avail">Avail</option>
+								<option value="Refund">Refund</option>
+							</select>
+						</div>
+
+						<div class="col-3">
+							<span id="stockSourceError"></span>
+						</div>
+					</div>
+
+					<!-- Row#5 -->
+					<div class="row">
+						<div class="col-4">
+							<label>Default Status</label>
+						</div>
+
+						<div class="col-5">
+							<input name="status" id="status" value="OPEN"
+								class="form-control" readonly />
+						</div>
+
+						<div class="col-3">
+							<span id="statusError"></span>
+						</div>
+					</div>
+
+					<!-- Row#6 -->
+					<div class="row">
+						<div class="col-4">
+							<label>Description</label>
+						</div>
+
+						<div class="col-5">
+							<textarea name="description" id="description"
+								class="form-control"></textarea>
+						</div>
+
+						<div class="col-3">
+							<span id="descriptionError"></span>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-success">
+						Create Sale Order <i class="fa fa-plus-square" aria-hidden="true"></i>
+					</button>
+
+					<!-- <input type="submit" value="Create Sale Order"
+						class="btn btn-success" /> -->
+				</form>
+			</div>
+			<!-- Card Footer -->
+			<div class="card-footer bg-secondary text-white text-center"
+				th:if="${message!=null}">
+				<span th:text="${message}"></span>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

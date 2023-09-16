@@ -1,0 +1,23 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+</head>
+
+<body>
+	<div th:insert="fragments/commonui :: userheader"></div>
+	<div th:insert="fragments/commonui :: usermenu"></div>
+	<div th:insert="fragments/commonui :: userfooter"></div>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>SERVICE ISSUE(CODE:500)</h3>
+			</div>
+
+			<div class="card-body">
+				<b class="text-danger">SERVICE EXECUTION ERROR!! CONTACT ADMIN FOR MORE DETAILS!!</b>
+			</div>
+			
+		</div> <!-- card end -->
+	</div>
+	<!-- container end -->
+</body>
+</html>

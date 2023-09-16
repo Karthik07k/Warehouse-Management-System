@@ -1,0 +1,95 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<title>USER REGISTER PAGE</title>
+</head>
+
+<body>
+	<div th:insert="fragments/commonui :: userheader"></div>
+	<div th:insert="fragments/commonui :: usermenu"></div>
+	<div th:insert="fragments/commonui :: userfooter"></div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>WELCOME TO USER REGISTER PAGE</h3>
+            </div>
+            <div class="card-body">
+                <form id="myUserForm" th:action="@{/user/create}" method="POST">
+                    <!-- Row#1 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>NAME</label>
+                        </div>
+                        <div class="col-4">
+                            <input name="name" id="name" class="form-control" />
+                        </div>
+                        <div class="col-5">
+                            <span id="nameError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row#2 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>EMAIL</label>
+                        </div>
+                        <div class="col-4">
+                            <input name="email" id="email" class="form-control" />
+                        </div>
+                        <div class="col-5">
+                            <span id="emailError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row#3 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>PASSWORD</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="password" value="**************" name="password" id="password" class="form-control" readonly/>
+                        </div>
+                        <div class="col-5">
+                            <span id="passwordError"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row#4 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>ROLES</label>
+                        </div>
+                        <div class="col-4">
+                          	<select name="roles" multiple class="form-control">
+                          		<option th:each="ob:${rolesMap}"
+                          		    th:value="${ob.key}" 
+                          			th:text="${ob.value}"
+                          		>
+                          		</option>
+                          	</select>
+                        </div>
+                        <div class="col-5">
+                            <span id="rolesError"></span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success" >
+                    	CREATE <i class="fa fa-plus-square" aria-hidden="true"></i>
+                    </button>
+                    
+                </form>
+            </div>
+            <!-- card body end -->
+             <div class="card-footer text-center" th:if="${message!=null}">
+                <span class="text-success" th:text="${message}"></span>
+            </div> <!--  footer end -->
+        </div>
+        <!-- card end -->
+    </div>
+    <!-- container end -->
+    <script type="text/javascript" th:src="@{/myjs/users.js}"></script>
+	
+</body>
+
+</html>

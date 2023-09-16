@@ -1,0 +1,85 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+   <title>UOM EDIT PAGE</title>
+</head>
+
+<body>
+	<div th:insert="fragments/commonui :: userheader"></div>
+	<div th:insert="fragments/commonui :: usermenu"></div>
+	<div th:insert="fragments/commonui :: userfooter"></div>
+	
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>WELCOME TO UOM EDIT PAGE</h3>
+            </div>
+            <div class="card-body">
+                <form id="myUomForm" th:action="@{/uom/update}" method="POST" th:object="${uom}">
+                	<!-- Row#0 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Uom Id</label>
+                        </div>
+                        <div class="col-4">
+                           <input th:field="*{id}" class="form-control" readOnly/>
+                        </div>
+                    </div>
+                    <!-- Row#1 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Uom Type</label>
+                        </div>
+                        <div class="col-4">
+                            <select th:field="*{uomType}" class="form-control">
+                                <option value="">-SELECT-</option>
+                                <option value="PACKING">PACKING</option>
+                                <option value="NO PACKING">NO PACKING</option>
+                                <option value="NA">NA</option>
+                            </select>
+                        </div>
+                        <div class="col-5">
+                            <span id="uomTypeError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row#1 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Uom Model</label>
+                        </div>
+                        <div class="col-4">
+                            <input th:field="*{uomModel}" class="form-control" />
+                        </div>
+                        <div class="col-5">
+                            <span id="uomModelError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row#1 -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Description</label>
+                        </div>
+                        <div class="col-4">
+                            <textarea th:field="*{uomDesc}" class="form-control"></textarea>
+                        </div>
+                        <div class="col-5">
+                            <span id="uomDescError"></span>
+                        </div>
+                    </div>
+                    <button type="submit"  class="btn btn-success" >
+                    	Update Uom <i class="fa fa-pencil-square fa-lg" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- card body end -->
+        </div>
+        <!-- card end -->
+    </div>
+    <!-- container end -->
+ <script type="text/javascript" th:src="@{/myjs/uoms.js}"></script>
+
+</body>
+
+</html>
